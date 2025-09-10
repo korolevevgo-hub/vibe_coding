@@ -10,7 +10,8 @@
 4. [Урок 3: Установка Ollama](lessons/lesson-3.md)
 5. [Урок 4: Подключение в IntelliJ IDEA через Continue](lessons/lesson-4.md)
 6. [Урок 5: Полный вайб-копилот](lessons/lesson-5.md)
-7. [Послесловие: Шпаргалка по вайб-кодингу](lessons/conclusion.md)
+7. [Послесловие: Шпаргалка по вайб-кодингу](lessons/tldr.md)
+8. [Клятва вайб-кодера](lessons/pledge.md)
 
 ---
 
