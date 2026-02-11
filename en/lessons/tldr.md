@@ -54,20 +54,48 @@ ollama stop <model>
 
    ![img.png](img/img.png)
 
-2. In `config.yaml` file insert:
+2. In `config.yaml` file insert. Insert your model to config ("TestModel" in my case):
    ```yaml
-   - name: llama3.1:8B
-     provider: ollama
-     model: llama3.1:8b
-     roles:
-       - chat
-       - edit
-       - apply
+   name: Local Assistant
+   version: 1.0.1
+   schema: v1
+   models:
+     - name: Llama 3.1 8B
+       provider: ollama
+       model: llama3.1:8b
+       roles:
+           - chat
+           - edit
+           - apply
+     - name: Qwen2.5-Coder 1.5B
+       provider: ollama
+       model: qwen2.5-coder:1.5b-base
+       roles:
+         - autocomplete
+     - name: Nomic Embed
+       provider: ollama
+       model: nomic-embed-text:latest
+       roles:
+         - embed
+     - name: TestModel
+       provider: ollama
+       model: my_sexy_model:latest
+       roles:
+         - chat
+         - apply
+   context:
+     - provider: code
+     - provider: docs
+     - provider: diff
+     - provider: terminal
+     - provider: problems
+     - provider: folder
+     - provider: codebase
    ```
 
-3. In model selection window specify `llama3.1:8B` (or another model you downloaded via Ollama):
+3. In model selection window specify `TestModel` (or another model you downloaded via Ollama):
 
-   ![img_2.png](img/img_2.png)
+   ![img2.png](img/img2.png)
 
 ### Main Usage Scenarios:
 

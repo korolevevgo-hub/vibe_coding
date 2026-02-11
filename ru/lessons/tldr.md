@@ -50,24 +50,53 @@ ollama stop <model>
 
 ## 🛠 Интеграция с IDE (Continue)
 
-1. Открой настройки ассистента в окне плагина и выбери:
+1. При открытии плагина необходимо, чтобы ollama была запущена и ты мог подключиться к ней нажав кнопку Connect:
 
    ![img.png](img/img.png)
 
-2. В файле `config.yaml` вставь:
+2. В файле `config.yaml` будет содержимое примерно такое. Добавь туда свою модель (В моем случае TestModel):
    ```yaml
-   - name: llama3.1:8B
-     provider: ollama
-     model: llama3.1:8b
-     roles:
-       - chat
-       - edit
-       - apply
+   name: Local Assistant
+   version: 1.0.1
+   schema: v1
+   models:
+     - name: Llama 3.1 8B
+       provider: ollama
+       model: llama3.1:8b
+       roles:
+           - chat
+           - edit
+           - apply
+     - name: Qwen2.5-Coder 1.5B
+       provider: ollama
+       model: qwen2.5-coder:1.5b-base
+       roles:
+         - autocomplete
+     - name: Nomic Embed
+       provider: ollama
+       model: nomic-embed-text:latest
+       roles:
+         - embed
+     - name: TestModel
+       provider: ollama
+       model: my_sexy_model:latest
+       roles:
+         - chat
+         - apply
+   context:
+     - provider: code
+     - provider: docs
+     - provider: diff
+     - provider: terminal
+     - provider: problems
+     - provider: folder
+     - provider: codebase
+
    ```
 
-3. В окне выбора модели укажи `llama3.1:8B` (или другую модель, которую ты скачал через Ollama):
+3. В окне выбора модели укажи `TestModel` (или другую модель, которую ты скачал через Ollama):
 
-   ![img_2.png](img/img_2.png)
+   ![img2.png](img/img2.png)
 
 ### Основные сценарии использования:
 

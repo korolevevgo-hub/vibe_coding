@@ -23,7 +23,7 @@
 
 1. Открой `File → Settings → Plugins → Marketplace`.
 2. Найди **Continue**.
-3. Установи и перезапусти IDE.
+3. Установи и перезапусти IDE (Plugin недоступен с IP РФ).
 
 ---
 
@@ -39,20 +39,46 @@
 
    (по умолчанию API доступен на `http://localhost:11434`).
 
-2. В IntelliJ IDEA открой: `Settings → Tools → Continue`.
+2. В IntelliJ IDEA открой: `IDE and Project settings → Models → Configure (справа от названия модели)`.
+В открывшемся yaml файле внеси необходимые изменения.
 
-3. Укажи конфигурацию модели (пример):
-
-   ```json
-   {
-     "models": [
-       {
-         "title": "Qwen Coder",
-         "provider": "ollama",
-         "model": "qwen2.5-coder:7b-instruct-q4_K_S"
-       }
-     ]
-   }
+3. В файле `config.yaml` будет содержимое примерно такое. Добавь туда свою модель (В моем случае TestModel):
+   ```yaml
+   name: Local Assistant
+   version: 1.0.1
+   schema: v1
+   models:
+     - name: Llama 3.1 8B
+       provider: ollama
+       model: llama3.1:8b
+       roles:
+           - chat
+           - edit
+           - apply
+     - name: Qwen2.5-Coder 1.5B
+       provider: ollama
+       model: qwen2.5-coder:1.5b-base
+       roles:
+         - autocomplete
+     - name: Nomic Embed
+       provider: ollama
+       model: nomic-embed-text:latest
+       roles:
+         - embed
+     - name: TestModel
+       provider: ollama
+       model: my_sexy_model:latest
+       roles:
+         - chat
+         - apply
+   context:
+     - provider: code
+     - provider: docs
+     - provider: diff
+     - provider: terminal
+     - provider: problems
+     - provider: folder
+     - provider: codebase
    ```
 
 4. Сохрани и перезапусти IDE.

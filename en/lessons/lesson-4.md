@@ -39,20 +39,47 @@ After installation, you need to connect Continue with a local model.
 
    (by default API is available at `http://localhost:11434`).
 
-2. In IntelliJ IDEA open: `Settings → Tools → Continue`.
+2. In IntelliJ IDEA open: `IDE and Project settings → Models → Configure (right side by model name)`.
+In the opened yaml file make necessary changes.
 
-3. Specify model configuration (example):
+3. In `config.yaml` file insert. Insert your model to config ("TestModel" in my case):
 
-   ```json
-   {
-     "models": [
-       {
-         "title": "Qwen Coder",
-         "provider": "ollama",
-         "model": "qwen2.5-coder:7b-instruct-q4_K_S"
-       }
-     ]
-   }
+   ```yaml
+   name: Local Assistant
+   version: 1.0.1
+   schema: v1
+   models:
+     - name: Llama 3.1 8B
+       provider: ollama
+       model: llama3.1:8b
+       roles:
+           - chat
+           - edit
+           - apply
+     - name: Qwen2.5-Coder 1.5B
+       provider: ollama
+       model: qwen2.5-coder:1.5b-base
+       roles:
+         - autocomplete
+     - name: Nomic Embed
+       provider: ollama
+       model: nomic-embed-text:latest
+       roles:
+         - embed
+     - name: TestModel
+       provider: ollama
+       model: my_sexy_model:latest
+       roles:
+         - chat
+         - apply
+   context:
+     - provider: code
+     - provider: docs
+     - provider: diff
+     - provider: terminal
+     - provider: problems
+     - provider: folder
+     - provider: codebase
    ```
 
 4. Save and restart the IDE.
